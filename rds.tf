@@ -5,7 +5,7 @@ resource "aws_rds_cluster" "this" {
   engine                          = "aurora"
   engine_mode                     = "serverless"
   database_name                   = "metabase"
-  master_username                 = "root"
+  master_username                 = var.rds_master_username
   master_password                 = random_string.this.result
   backup_retention_period         = 5 # days
   snapshot_identifier             = var.snapshot_identifier
@@ -18,7 +18,7 @@ resource "aws_rds_cluster" "this" {
 
   scaling_configuration {
     auto_pause   = var.auto_pause
-    min_capacity = 1
+    min_capacity = var.min_capacity
     max_capacity = var.max_capacity
   }
 

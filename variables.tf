@@ -11,15 +11,15 @@ variable "domain" {
 }
 
 variable "zone_id" {
-  description = "(Required) https://www.terraform.io/docs/providers/aws/r/route53_record.html#zone_id"
+  description = "(Required) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record#zone_id"
 }
 
 variable "certificate_arn" {
-  description = "(Required) https://www.terraform.io/docs/providers/aws/r/lb_listener.html#certificate_arn"
+  description = "(Required) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener#certificate_arn"
 }
 
 variable "vpc_id" {
-  description = "(Required) https://www.terraform.io/docs/providers/aws/r/security_group.html#vpc_id"
+  description = "(Required) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#vpc_id"
 }
 
 variable "id" {
@@ -48,12 +48,17 @@ variable "memory" {
 }
 
 variable "max_capacity" {
-  description = "(Optional) https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#max_capacity"
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#max_capacity"
   default     = "16"
 }
 
+variable "min_capacity" {
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#min_capacity"
+  default     = "1"
+}
+
 variable "desired_count" {
-  description = "(Optional) https://www.terraform.io/docs/providers/aws/r/ecs_service.html#desired_count"
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service#desired_count"
   default     = "2"
 }
 
@@ -78,8 +83,14 @@ variable "ssl_policy" {
 }
 
 variable "snapshot_identifier" {
-  description = "(Optional) https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#snapshot_identifier"
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#snapshot_identifier"
   default     = ""
+}
+
+variable "rds_master_username" {
+  description = "Master username for RDS Instance"
+  type = string
+  default = "root"
 }
 
 variable "environment" {
@@ -88,16 +99,16 @@ variable "environment" {
 }
 
 variable "java_timezone" {
-  description = "(Optional) https://www.metabase.com/docs/v0.21.1/operations-guide/running-metabase-on-docker.html#setting-the-java-timezone"
+  description = "(Optional) https://www.metabase.com/docs/v0.21.1/operations-guide/running-metabase-on-docker#setting-the-java-timezone"
   default     = "US/Pacific"
 }
 
 variable "db_cluster_parameter_group_name" {
-  description = "(Optional) https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#db_cluster_parameter_group_name"
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#db_cluster_parameter_group_name"
   default     = ""
 }
 
 variable "auto_pause" {
-  description = "(Optional) https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#auto_pause"
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#auto_pause"
   default     = false
 }

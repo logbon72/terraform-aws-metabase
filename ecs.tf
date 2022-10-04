@@ -1,12 +1,15 @@
 resource "aws_ecs_cluster" "this" {
   name               = var.id
-  capacity_providers = ["FARGATE"]
   tags               = var.tags
-
   setting {
     name  = "containerInsights"
     value = "enabled"
   }
+}
+
+resource "aws_ecs_cluster_capacity_providers" "this" {
+  cluster_name = aws_ecs_cluster.this.id
+  capacity_providers = ["FARGATE"]
 }
 
 resource "aws_ecs_task_definition" "this" {
