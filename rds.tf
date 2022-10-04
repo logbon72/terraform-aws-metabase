@@ -2,7 +2,8 @@ resource "aws_rds_cluster" "this" {
   cluster_identifier_prefix       = "${var.id}-"
   final_snapshot_identifier       = "${var.id}-${formatdate("YYYYMMDDhhmmss", timestamp())}"
   copy_tags_to_snapshot           = true
-  engine                          = "aurora"
+  engine                          = "aurora-mysql"
+  engine_version                  = "8.0.mysql_aurora.3.02.0"
   engine_mode                     = "serverless"
   database_name                   = "metabase"
   master_username                 = var.rds_master_username
